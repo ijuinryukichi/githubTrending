@@ -2,21 +2,15 @@ package com.example.githubtrending.ui.transition
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.navigation.navigation
-import com.example.githubtrending.Screen
 import com.example.githubtrending.ui.feature.developers.DevelopersScreen
-import com.example.githubtrending.ui.feature.explore.ExploreScreen
 import com.example.githubtrending.ui.feature.explore.SearchScreen
 import com.example.githubtrending.ui.feature.explore.WebViewScreen
-import com.example.githubtrending.ui.feature.trending.TrendingScreen
 
 const val webViewScreenRouteParameterName = "url"
 const val webViewScreenRoute = "webPage/{$webViewScreenRouteParameterName}"
@@ -67,18 +61,3 @@ fun GithubTrendingNavHost() {
         }
     }
 }
-
-//@Composable
-//fun NavigationHost(navController: NavHostController, modifier: Modifier = Modifier) {
-//    NavHost(navController, startDestination = Screen.Trending.route, modifier = modifier) {
-//        composable(Screen.Trending.route) { TrendingScreen() }
-//        composable(Screen.Developers.route) { DevelopersScreen() }
-//        composable(Screen.Explore.route) { ExploreScreen() }
-//    }
-//}
-//
-//@Composable
-//fun currentRoute(navController: NavHostController): String? {
-//    val navBackStackEntry = navController.currentBackStackEntryAsState().value
-//    return navBackStackEntry?.destination?.route
-//}

@@ -3,6 +3,7 @@ package com.example.githubtrending.di
 import com.example.githubtrending.model.valueobject.HttpLocateType
 import com.example.githubtrending.repository.GitHubRepository
 import com.example.githubtrending.repository.GitHubRepositoryImpl
+import com.example.githubtrending.repository.http.DoForceHttpClient
 import com.example.githubtrending.repository.http.GitHubHttpClient
 import dagger.Binds
 import dagger.Module
@@ -35,6 +36,19 @@ class InfraModule {
             .build()
     }
 
+    @HttpLocate(HttpLocateType.DoForceApi)
+    @Provides
+    internal fun provideDoForceRetrofit(
+        httpClient: OkHttpClient
+    ): Retrofit {
+        val contentType = "application/json".toMediaType()
+        val json = Json { ignoreUnknownKeys = true }
+        return Retrofit.Builder()
+            .baseUrl("https://trend.doforce.us.kg")
+            .addConverterFactory(json.asConverterFactory(contentType))
+            .client(httpClient)
+            .build()
+    }
 
     @Provides
     internal fun provideOkHttp(
@@ -59,6 +73,12 @@ class InfraModule {
         return retrofit.create(GitHubHttpClient::class.java)
     }
 
+    @Provides
+    internal fun provideDoForceHttpClient(
+        @HttpLocate(HttpLocateType.DoForceApi) retrofit: Retrofit
+    ): DoForceHttpClient {
+        return retrofit.create(DoForceHttpClient::class.java)
+    }
 }
 
 @InstallIn(SingletonComponent::class)
