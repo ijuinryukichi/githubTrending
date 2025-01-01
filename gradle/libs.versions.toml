@@ -1,10 +1,9 @@
 [versions]
 agp = "8.7.2"
-kotlin = '1.9.23'
-composeCompiler = '1.5.11'
-composeBom = '2024.03.00'
+kotlin = "2.0.0"
+composeBom = "2024.03.00"
 androidxComposeRuntimeTracing = "1.0.0-beta01"
-ksp = "1.9.10-1.0.13"
+ksp = "2.0.0-1.0.21"
 coreKtx = "1.12.0"
 androidxLifecycle = "2.7.0"
 activityCompose = "1.8.2"
@@ -19,7 +18,7 @@ composeGlide = "1.0.0-beta01"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-serialization = "1.9.20"
+serialization = "2.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -54,7 +53,7 @@ compose-glide = { module = "com.github.bumptech.glide:compose", version.ref = "c
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serialization" }
-
