@@ -1,9 +1,9 @@
-package com.example.githubtrending
+package com.example.githubtrending.ui.feature.explore
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun DevelopersScreen(viewModel: DevelopersViewModel = viewModel()) {
+fun ExploreScreen(viewModel: ExploreViewModel = viewModel()) {
     // UI implementation
 }

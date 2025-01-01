@@ -11,6 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
+import com.example.githubtrending.ui.feature.developers.DevelopersScreen
+import com.example.githubtrending.ui.feature.explore.ExploreScreen
+import com.example.githubtrending.ui.feature.trending.TrendingScreen
 import com.example.githubtrending.ui.theme.GithubTrendingTheme
 
 class MainActivity : ComponentActivity() {

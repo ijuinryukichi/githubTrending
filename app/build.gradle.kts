@@ -40,8 +40,8 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.kotlin.get()
+    composeCompiler {
+        // Kotlin 2.0.0以降では、kotlinCompilerExtensionVersionの明示的な設定は通常不要です
     }
     packaging {
         resources {

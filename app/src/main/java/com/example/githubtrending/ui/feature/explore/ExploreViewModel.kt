@@ -1,4 +1,4 @@
-package com.example.githubtrending
+package com.example.githubtrending.ui.feature.explore
 
 import androidx.lifecycle.ViewModel
 
