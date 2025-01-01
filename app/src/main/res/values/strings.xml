@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">GithubTrending</string>
+    <string name="loading">Loading</string>
+    <string name="language">Language: %s</string>
+    <string name="search_hint">GitHub Repository</string>
+    <string name="no_results">No results 😓</string>
+    <string name="unknown">\?</string>
+    <string name="retry">Retry</string>
+    <string name="search">検索</string>
+    <string name="list">一覧</string>
+    <string name="profile">プロフィール</string>
+    <string name="trending">話題</string>
+    <string name="developers">開発者</string>
+    <string name="explore">検索</string>
+    <string name="api_not_found">ご利用の機能もしくはページが存在しません。</string>
+    <string name="ok">OK</string>
 </resources>
