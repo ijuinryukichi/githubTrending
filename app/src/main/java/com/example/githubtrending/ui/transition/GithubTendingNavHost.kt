@@ -11,6 +11,7 @@ import androidx.navigation.navigation
 import com.example.githubtrending.ui.feature.developers.DevelopersScreen
 import com.example.githubtrending.ui.feature.explore.SearchScreen
 import com.example.githubtrending.ui.feature.explore.WebViewScreen
+import com.example.githubtrending.ui.feature.trending.TrendingScreen
 
 const val webViewScreenRouteParameterName = "url"
 const val webViewScreenRoute = "webPage/{$webViewScreenRouteParameterName}"
@@ -33,7 +34,7 @@ fun GithubTrendingNavHost() {
             startDestination = BottomTabType.TRENDING.route
         ) {
             composable(BottomTabType.TRENDING.route) { from ->
-                SearchScreen(onNavigateToRoute = onNavigateToRoute) { url ->
+                TrendingScreen(onNavigateToRoute = onNavigateToRoute) { url ->
                     myNavController.navigate(url, from)
                 }
             }

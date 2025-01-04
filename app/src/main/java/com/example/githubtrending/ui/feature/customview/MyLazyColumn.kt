@@ -112,3 +112,59 @@ fun MyLazyColumn(
     }
 
 }
+
+@Composable
+fun MyLazyColumnNoPaging(
+    modifier: Modifier = Modifier,
+    state: LazyListState = rememberLazyListState(),
+    contentPadding: PaddingValues = PaddingValues(0.dp),
+    reverseLayout: Boolean = false,
+    verticalArrangement: Arrangement.Vertical =
+        if (!reverseLayout) Arrangement.Top else Arrangement.Bottom,
+    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
+    flingBehavior: FlingBehavior = ScrollableDefaults.flingBehavior(),
+    userScrollEnabled: Boolean = true,
+    scrollPosition: Int? = null,
+    viewableIndex: ((Int) -> Unit)? = null,
+    content: LazyListScope.() -> Unit
+) {
+
+    scrollPosition?.let {
+        LaunchedEffect(scrollPosition) {
+            state.scrollToItem(scrollPosition)
+        }
+    }
+
+    LaunchedEffect(state) {
+        snapshotFlow {
+            if (state.layoutInfo.visibleItemsInfo.isEmpty()) {
+                Pair(false, 0)
+            } else {
+                val itemHeight = state.layoutInfo.visibleItemsInfo.last().size
+                val itemTop = state.layoutInfo.visibleItemsInfo.last().offset
+                val deviceHeight = state.layoutInfo.viewportSize.height
+                val viewableTopPixel = deviceHeight - itemTop
+                val isTarget = viewableTopPixel > itemHeight * 0.7
+                Pair(isTarget, state.layoutInfo.visibleItemsInfo.last().index)
+            }
+        }.distinctUntilChanged()
+            .filter {
+                it.first
+            }.collect {
+                viewableIndex?.invoke(it.second)
+            }
+    }
+
+    LazyColumn(
+        modifier,
+        state,
+        contentPadding,
+        reverseLayout,
+        verticalArrangement,
+        horizontalAlignment,
+        flingBehavior,
+        userScrollEnabled,
+    ) {
+        content()
+    }
+}

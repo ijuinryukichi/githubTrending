@@ -1,6 +1,8 @@
 package com.example.githubtrending.di
 
 import com.example.githubtrending.model.valueobject.HttpLocateType
+import com.example.githubtrending.repository.DoForceRepository
+import com.example.githubtrending.repository.DoForceRepositoryImpl
 import com.example.githubtrending.repository.GitHubRepository
 import com.example.githubtrending.repository.GitHubRepositoryImpl
 import com.example.githubtrending.repository.http.DoForceHttpClient
@@ -87,6 +89,11 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindGithubRepository(impl: GitHubRepositoryImpl): GitHubRepository
+
+    @Binds
+    abstract fun bindDoForceRepository(
+        doForceRepositoryImpl: DoForceRepositoryImpl
+    ): DoForceRepository
 
 }
 
